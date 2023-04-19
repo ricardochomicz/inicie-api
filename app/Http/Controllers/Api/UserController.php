@@ -29,7 +29,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = $this->HttpOptionsRequest()
             ->post($this->urlApiUsers(), [
                 'name' => $request->name,
@@ -37,39 +36,9 @@ class UserController extends Controller
                 'gender' => $request->gender,
                 'status' => 'active'
             ]);
-
-
-        // Cadastra um novo post para o usuário cadastrado
-        $post = $this->HttpOptionsRequest()
-            ->post($this->urlApiPosts(), [
-                'user_id' => $user['id'],
-                'title' => fake()->city(),
-                'body' => fake()->paragraph(),
-            ]);
-
-        // Cadastra um novo comentário para o post cadastrado    
-        $comment = $this->HttpOptionsRequest()
-            ->post($this->urlApiComments(), [
-                'post_id' => $post['id'],
-                'name' => $user['name'],
-                'email' => $user['email'],
-                'body' => fake()->paragraph()
-            ]);
-
-        // Cadastra um novo comentário publico
-        $todo = $this->HttpOptionsRequest()
-            ->post($this->urlApiTodos(), [
-                'user_id' => $user['id'],
-                'title' => fake()->text(5),
-                'due_on' => \Carbon\Carbon::now(),
-                'status' => "completed"
-            ]);
-            
+                  
         return response()->json([
             'id_user' => $user['id'],
-            'id_post' => $post['id'],
-            'id_comment' => $comment['id'],
-            'id_comment_list_public' => $todo['id']
         ]);
     }
 
@@ -92,14 +61,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $user = $this->HttpOptionsRequest()
-            ->put($this->urlApiUsers() . $id, [
-                'name' => $request->name,
-                'email' => $request->email,
-                'gender' => $request->gender,
-                'status' => $request->status
-            ]);
+            ->put($this->urlApiUsers() . $id, $request->all());
 
         return $user;
     }

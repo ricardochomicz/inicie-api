@@ -22,6 +22,19 @@ class TodoController extends Controller
         );
     }
 
+    public function store(Request $request)
+    {
+        $todo = $this->HttpOptionsRequest()
+        ->post($this->urlApiTodos(), [
+            'user_id' => $request->user_id,
+            'title' => fake()->text(5),
+            'due_on' => \Carbon\Carbon::now(),
+            'status' => "completed"
+        ]);
+
+        return $todo;
+    }
+
 
     /**
      * Remove the specified resource from storage.

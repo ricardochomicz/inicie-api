@@ -23,9 +23,9 @@ Route::group(['as' => 'api.'], function () {
     Route::get('users/{id}/todos', [UserController::class, 'getCommentsPublicUser']);
     Route::resource('users', UserController::class, ['except' => ['create', 'edit']]);
     Route::get('posts/{id}/comments', [PostController::class, 'getCommentsPost']);
-    Route::resource('posts', PostController::class, ['only' => ['index', 'show']]);
-    Route::resource('comments', CommentController::class, ['only' => ['show', 'index']]);
-    Route::resource('todos', TodoController::class, ['only' => ['index', 'destroy']]);
+    Route::resource('posts', PostController::class, ['only' => ['index', 'store', 'show']]);
+    Route::resource('comments', CommentController::class, ['only' => ['index', 'store', 'show']]);
+    Route::resource('todos', TodoController::class, ['only' => ['index', 'store', 'destroy']]);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

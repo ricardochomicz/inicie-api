@@ -23,6 +23,19 @@ class CommentController extends Controller
     }
 
 
+    public function store(Request $request)
+    {
+        $comment = $this->HttpOptionsRequest()
+        ->post($this->urlApiComments(), [
+            'post_id' => $request->post_id,
+            'name' => fake()->name(),
+            'email' => fake()->email(),
+            'body' => fake()->paragraph()
+        ]);
+        return $comment;
+    }
+
+
     /**
      * Display the specified resource.
      */

@@ -23,6 +23,17 @@ class PostController extends Controller
         );
     }
 
+    public function store(Request $request)
+    {
+        $post = $this->HttpOptionsRequest()
+        ->post($this->urlApiPosts(), [
+            'user_id' => $request->user_id,
+            'title' => fake()->city(),
+            'body' => fake()->paragraph(),
+        ]);
+        return $post;
+    }
+
 
 
     /**
