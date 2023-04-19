@@ -11,8 +11,8 @@
 
 ### CRUD
 #### Criação novo usuário
-##### post public/v2/users
-###### body request
+#### post public/v2/users
+##### body request
 <ul>
 <li>name</li>
 <li>email</li>
@@ -21,34 +21,34 @@
 </ul>
 <p>return id usuário</p>
 
-#### Lista todos os usuários
-##### get public/v2/users
+### Lista todos os usuários
+#### get public/v2/users
 
 #### Retorna usuário cadastrado
 ##### get public/v2/users/{id}
 
 #### Cria um novo post para o usuário cadastrado
-##### post public/v2/posts/
-###### body request
+#### post public/v2/posts/
+##### body request
 <ul>
 <li>user_id</li>
 </ul>
 <p>return id post</p>
 
 #### Cria um comentário para o post criado
-##### post public/v2/comments/
-###### body request
+#### post public/v2/comments/
+##### body request
 <ul>
 <li>post_id</li>
 </ul>
 
 #### Cria um comentário na lista pública
-##### post public/v2/todos/
-###### body request
+#### post public/v2/todos/
+##### body request
 <ul>
 <li>user_id</li>
 </ul>
 
 #### Apaga o comentário criado acima (lista pública)
-##### delete public/v2/todos/{id}
+#### delete public/v2/todos/{id}
 
