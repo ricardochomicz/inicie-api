@@ -6,4 +6,4 @@
 <p>Consumir API Externa https://gorest.co.in, conforme os requisitos infromados</p>
 
 #### Clone Projeto:
-<p></p>
+<p>git clone https//github.com.br/ricardochomicz</p>
